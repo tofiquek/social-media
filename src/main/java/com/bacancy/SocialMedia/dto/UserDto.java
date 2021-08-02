@@ -3,7 +3,9 @@ package com.bacancy.SocialMedia.dto;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 /**
  * UserDto containing attributes related to the User
  * @author Tofique Ahmed Khan
@@ -14,11 +16,14 @@ import javax.persistence.Id;
 public class UserDto {
 
 	@Id
+	@GeneratedValue
 	private long id;
 	private String name;
 	private Date dateOfBirth;
 	private String email;
 	private String address;
+	
+
 	
 	public UserDto() {
 		super();

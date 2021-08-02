@@ -2,18 +2,29 @@ package com.bacancy.SocialMedia.dto;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  * PostDto containing attributes related to the Post
  * @author Tofique Ahmed Khan
  *
  */
+@Entity
 public class PostDto {
 
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String postName;
 	private String detials;
 	private Date postCreatedDate;
 	private Date postUpdatedDate;
+
+	@ManyToOne
+	private UserDto user;
 	
 	public PostDto() {
 		super();
