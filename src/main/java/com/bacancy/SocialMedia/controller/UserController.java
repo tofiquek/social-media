@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bacancy.SocialMedia.dto.UserDto;
 import com.bacancy.SocialMedia.repository.UserRepository;
-
+/**
+ * UserController is a RestController Which Contain REST API related to User
+ * @author Tofique Ahmed Khan
+ *
+ */
 @RestController
 public class UserController {
 	

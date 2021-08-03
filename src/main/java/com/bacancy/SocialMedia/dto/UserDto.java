@@ -1,6 +1,7 @@
 package com.bacancy.SocialMedia.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,8 @@ public class UserDto {
 	private String email;
 	private String address;
 	
-
+	@OneToMany(mappedBy = "user")
+	private List<PostDto> posts;
 	
 	public UserDto() {
 		super();
@@ -67,6 +69,14 @@ public class UserDto {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public List<PostDto> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<PostDto> posts) {
+		this.posts = posts;
 	}
 	
 	

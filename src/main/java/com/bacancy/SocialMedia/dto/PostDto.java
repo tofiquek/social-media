@@ -1,11 +1,16 @@
 package com.bacancy.SocialMedia.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * PostDto containing attributes related to the Post
@@ -23,8 +28,13 @@ public class PostDto {
 	private Date postCreatedDate;
 	private Date postUpdatedDate;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JsonIgnore
 	private UserDto user;
+	
+	@OneToMany(mappedBy = "user")
+	private List<CommentDto> comments;
+	
 	
 	public PostDto() {
 		super();
@@ -67,6 +77,22 @@ public class PostDto {
 	}
 	public void setPostUpdatedDate(Date postUpdatedDate) {
 		this.postUpdatedDate = postUpdatedDate;
+	}
+
+	public UserDto getUser() {
+		return user;
+	}
+
+	public void setUser(UserDto user) {
+		this.user = user;
+	}
+
+	public List<CommentDto> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<CommentDto> comments) {
+		this.comments = comments;
 	}
 	
 	
