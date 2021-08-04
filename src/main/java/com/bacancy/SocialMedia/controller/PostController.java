@@ -51,10 +51,13 @@ public class PostController {
 		return savedPost;
 	}
 	
-	@PutMapping("/social-media/posts")
-	public PostDto updatePost(@RequestBody PostDto dto) {
-		dto.setPostUpdatedDate(new Date());
-		PostDto updatedPost = postRepository.save(dto);
+	@PutMapping("/social-media/{userId}/posts")
+	public PostDto updatePost(@PathVariable Long userId,@RequestBody PostDto postDto) {
+		Optional<UserDto> user = userRepository.findById(userId);
+		UserDto userDto = user.get();
+		postDto.setUser(userDto);
+		postDto.setPostUpdatedDate(new Date());
+		PostDto updatedPost = postRepository.save(postDto);
 		return updatedPost;
 	}
 	

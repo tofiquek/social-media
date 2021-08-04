@@ -8,19 +8,13 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-/**
- * CommentDto containing attributes related to the Comment
- * @author Tofique Ahmed Khan
- *
- */
 @Entity
-public class CommentDto {
-	
+public class LikeDto {
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	private String comment;
+	private String message;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JsonIgnore
@@ -30,57 +24,40 @@ public class CommentDto {
 	@JsonIgnore
 	private UserDto user;
 	
-	public CommentDto() {
+	
+	public LikeDto() {
 		super();
 	}
-	
-	
-	
-	public CommentDto(Long id, String comment) {
+	public LikeDto(Long id, String message) {
 		super();
 		this.id = id;
-		this.comment = comment;
+		this.message = message;
 	}
-
-
-
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getComment() {
-		return comment;
+	public String getMessage() {
+		return message;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setMessage(String message) {
+		this.message = message;
 	}
-
-
-
 	public PostDto getPost() {
 		return post;
 	}
-
-
-
 	public void setPost(PostDto post) {
 		this.post = post;
 	}
-
-
-
 	public UserDto getUser() {
 		return user;
 	}
-
-
-
 	public void setUser(UserDto user) {
 		this.user = user;
 	}
 	
 	
-
+	
 }

@@ -32,8 +32,11 @@ public class PostDto {
 	@JsonIgnore
 	private UserDto user;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "post")
 	private List<CommentDto> comments;
+	
+	@OneToMany(mappedBy = "post")
+	private List<LikeDto> likes;
 	
 	
 	public PostDto() {
