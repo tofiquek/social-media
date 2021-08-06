@@ -13,5 +13,21 @@ Post:
   User can Like a Post
   User can Add Comment on the Post
   A User can only like a Post Single Time.
-  A user can put comment Multiple Times.
+  A user can put comment Multiple Times.  
   
+Link's :
+  User : http://localhost:8100/social-media/users
+  Post : http://localhost:8100/social-media/{userId}/posts
+
+Packages :
+  dto         : For Data Transfer Object
+  controller  : For rest controller
+  repository  : For JPA Repository
+
+Relations :
+  Post has Many to one relationship with User
+  Comments has Many to one relationship with Post & User
+
+Technologies :
+  SpringBoot
+  JPA
