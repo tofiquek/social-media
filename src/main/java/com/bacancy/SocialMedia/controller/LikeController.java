@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bacancy.SocialMedia.dto.CommentDto;
-import com.bacancy.SocialMedia.dto.LikeDto;
-import com.bacancy.SocialMedia.dto.PostDto;
-import com.bacancy.SocialMedia.dto.UserDto;
+import com.bacancy.SocialMedia.entity.Comment;
+import com.bacancy.SocialMedia.entity.Like;
+import com.bacancy.SocialMedia.entity.Post;
+import com.bacancy.SocialMedia.entity.User;
 import com.bacancy.SocialMedia.repository.LikeRepository;
 import com.bacancy.SocialMedia.repository.PostRepository;
 import com.bacancy.SocialMedia.repository.UserRepository;
@@ -28,23 +28,24 @@ public class LikeController {
 	@Autowired
 	private LikeRepository likeRepository;
 	
-	@PostMapping("/social-media/{userId}/{postId}/likes")
-	public LikeDto postLike(@PathVariable Long userId,@PathVariable Long postId) {
-		
-		
-		Optional<UserDto> user = userRepository.findById(userId);
-		Optional<PostDto> post = postRepository.findById(postId);
-		UserDto userDto = user.get();
-		PostDto postDto = post.get();
-		LikeDto likeDto = new LikeDto();
-		likeDto.setPost(postDto);
-		likeDto.setUser(userDto);
-		
-		LikeDto like = likeRepository.save(likeDto);
-		
-		return like;
-	}
-	
+//	@PostMapping("/social-media/{userId}/{postId}/likes")
+//	public Like postLike(@PathVariable Long userId,@PathVariable Long postId) {
+//		
+////		Optional<LikeDto> alreadyLike = likeRepository.f
+//		
+//		Optional<User> user = userRepository.findById(userId);
+//		Optional<Post> post = postRepository.findById(postId);
+//		User userDto = user.get();
+//		Post postDto = post.get();
+//		Like likeDto = new Like();
+//		likeDto.setPost(postDto);
+//		likeDto.setUser(userDto);
+//		
+//		Like like = likeRepository.save(likeDto);
+//		
+//		return like;
+//	}
+//	
 	
 	
 }

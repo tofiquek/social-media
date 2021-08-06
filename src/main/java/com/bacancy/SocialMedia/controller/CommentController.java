@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bacancy.SocialMedia.dto.CommentDto;
-import com.bacancy.SocialMedia.dto.PostDto;
-import com.bacancy.SocialMedia.dto.UserDto;
+import com.bacancy.SocialMedia.entity.Comment;
+import com.bacancy.SocialMedia.entity.Post;
+import com.bacancy.SocialMedia.entity.User;
 import com.bacancy.SocialMedia.repository.CommentRepository;
 import com.bacancy.SocialMedia.repository.PostRepository;
 import com.bacancy.SocialMedia.repository.UserRepository;
@@ -32,21 +32,21 @@ public class CommentController {
 	private CommentRepository commentRepository;
 	
 	@GetMapping("/social-media/{postId}/comments")
-	public List<CommentDto> retrieveComments(@PathVariable Long postId){
-		Optional<PostDto> posts = postRepository.findById(postId);
+	public List<Comment> retrieveComments(@PathVariable Long postId){
+		Optional<Post> posts = postRepository.findById(postId);
 		return posts.get().getComments();
 	}
 
 	@PostMapping("/social-media/{userId}/{postId}/comments")
-	public CommentDto addComment(@PathVariable Long userId,@PathVariable Long postId,@RequestBody CommentDto commentDto) {
-		Optional<UserDto> user = userRepository.findById(userId);
-		Optional<PostDto> post = postRepository.findById(postId);
-		UserDto userDto = user.get();
-		PostDto postDto = post.get();
+	public Comment addComment(@PathVariable Long userId,@PathVariable Long postId,@RequestBody Comment commentDto) {
+		Optional<User> user = userRepository.findById(userId);
+		Optional<Post> post = postRepository.findById(postId);
+		User userDto = user.get();
+		Post postDto = post.get();
 		commentDto.setPost(postDto);
 		commentDto.setUser(userDto);
 		
-		CommentDto savedComment = commentRepository.save(commentDto);
+		Comment savedComment = commentRepository.save(commentDto);
 		return savedComment;
 	}
 	

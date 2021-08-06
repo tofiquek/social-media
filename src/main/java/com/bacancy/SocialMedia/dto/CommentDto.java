@@ -1,86 +1,53 @@
 package com.bacancy.SocialMedia.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-/**
- * CommentDto containing attributes related to the Comment
- * @author Tofique Ahmed Khan
- *
- */
-@Entity
 public class CommentDto {
-	
-	@Id
-	@GeneratedValue
+
 	private Long id;
-	
+
 	private String comment;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	
 	@JsonIgnore
-	private PostDto post;
+	private PostDto postDto;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	
 	@JsonIgnore
-	private UserDto user;
-	
-	public CommentDto() {
-		super();
-	}
-	
-	
-	
-	public CommentDto(Long id, String comment) {
-		super();
-		this.id = id;
-		this.comment = comment;
-	}
-
-
+	private UserDto userDto;
 
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getComment() {
 		return comment;
 	}
+
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
 
-
-
-	public PostDto getPost() {
-		return post;
+	public PostDto getPostDto() {
+		return postDto;
 	}
 
-
-
-	public void setPost(PostDto post) {
-		this.post = post;
+	public void setPostDto(PostDto postDto) {
+		this.postDto = postDto;
 	}
 
-
-
-	public UserDto getUser() {
-		return user;
+	public UserDto getUserDto() {
+		return userDto;
 	}
 
-
-
-	public void setUser(UserDto user) {
-		this.user = user;
+	public void setUserDto(UserDto userDto) {
+		this.userDto = userDto;
 	}
 	
 	
-
 }

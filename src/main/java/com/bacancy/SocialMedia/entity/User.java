@@ -1,19 +1,44 @@
-package com.bacancy.SocialMedia.dto;
+package com.bacancy.SocialMedia.entity;
 
 import java.util.Date;
 import java.util.List;
 
-import com.bacancy.SocialMedia.entity.Post;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+/**
+ * UserDto containing attributes related to the User
+ * @author Tofique Ahmed Khan
+ *
+ */
 
-public class UserDto {
+@Entity
+public class User {
+
+	@Id
+	@GeneratedValue
 	private long id;
 	private String name;
 	private Date dateOfBirth;
 	private String email;
 	private String address;
 	
+	@OneToMany(mappedBy = "user")
 	private List<Post> posts;
 	
+	public User() {
+		super();
+	}
+	
+	public User(long id, String name, Date dateOfBirth, String email, String address) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dateOfBirth = dateOfBirth;
+		this.email = email;
+		this.address = address;
+	}
 	
 	public long getId() {
 		return id;
@@ -45,12 +70,15 @@ public class UserDto {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	public List<Post> getPosts() {
 		return posts;
 	}
+
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
+	
 	
 	
 }

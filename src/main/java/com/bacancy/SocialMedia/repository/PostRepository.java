@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bacancy.SocialMedia.dto.PostDto;
+import com.bacancy.SocialMedia.entity.Post;
 
-public interface PostRepository extends JpaRepository<PostDto, Long>{
+
+
+public interface PostRepository extends JpaRepository<Post, Long>{
 	
 
 }

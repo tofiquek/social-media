@@ -1,21 +1,38 @@
-package com.bacancy.SocialMedia.dto;
+package com.bacancy.SocialMedia.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.bacancy.SocialMedia.entity.Post;
-import com.bacancy.SocialMedia.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class LikeDto {
+@Entity
+public class Like {
 
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String message;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JsonIgnore
 	private Post post;
 
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JsonIgnore
 	private User user;
 	
+	
+	public Like() {
+		super();
+	}
+	public Like(Long id, String message) {
+		super();
+		this.id = id;
+		this.message = message;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -40,6 +57,7 @@ public class LikeDto {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
 	
 	
 }

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bacancy.SocialMedia.dto.PostDto;
-import com.bacancy.SocialMedia.dto.UserDto;
+import com.bacancy.SocialMedia.entity.Post;
+import com.bacancy.SocialMedia.entity.User;
 import com.bacancy.SocialMedia.repository.PostRepository;
 import com.bacancy.SocialMedia.repository.UserRepository;
 
@@ -28,36 +28,36 @@ public class PostController {
 	private UserRepository userRepository;
 	
 	@GetMapping("/social-media/posts")
-	public List<PostDto> retriveAllPosts(){
-		List<PostDto> posts = postRepository.findAll();
+	public List<Post> retriveAllPosts(){
+		List<Post> posts = postRepository.findAll();
 		return posts;
 	}
 	
 	@GetMapping("/social-media/{userId}/posts")
-	public List<PostDto> retriveAllPostsByUser(@PathVariable Long userId){
-		Optional<UserDto> userOptional = userRepository.findById(userId);
+	public List<Post> retriveAllPostsByUser(@PathVariable Long userId){
+		Optional<User> userOptional = userRepository.findById(userId);
 		return userOptional.get().getPosts();
 	}
 	
 	
 	
 	@PostMapping("/social-media/{userId}/posts")
-	public PostDto createPost(@PathVariable Long userId,@RequestBody PostDto postDto) {
-		Optional<UserDto> user = userRepository.findById(userId);
-		UserDto userDto = user.get();
+	public Post createPost(@PathVariable Long userId,@RequestBody Post postDto) {
+		Optional<User> user = userRepository.findById(userId);
+		User userDto = user.get();
 		postDto.setUser(userDto);
 		postDto.setPostCreatedDate(new Date());
-		PostDto savedPost = postRepository.save(postDto);
+		Post savedPost = postRepository.save(postDto);
 		return savedPost;
 	}
 	
 	@PutMapping("/social-media/{userId}/posts")
-	public PostDto updatePost(@PathVariable Long userId,@RequestBody PostDto postDto) {
-		Optional<UserDto> user = userRepository.findById(userId);
-		UserDto userDto = user.get();
+	public Post updatePost(@PathVariable Long userId,@RequestBody Post postDto) {
+		Optional<User> user = userRepository.findById(userId);
+		User userDto = user.get();
 		postDto.setUser(userDto);
 		postDto.setPostUpdatedDate(new Date());
-		PostDto updatedPost = postRepository.save(postDto);
+		Post updatedPost = postRepository.save(postDto);
 		return updatedPost;
 	}
 	
