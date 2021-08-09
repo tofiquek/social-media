@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Like {
 
@@ -17,11 +15,9 @@ public class Like {
 	private String message;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JsonIgnore
 	private Post post;
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JsonIgnore
 	private User user;
 	
 	

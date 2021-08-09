@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 /**
  * PostDto containing attributes related to the Post
  * @author Tofique Ahmed Khan
@@ -29,7 +27,6 @@ public class Post {
 	private Date postUpdatedDate;
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JsonIgnore
 	private User user;
 	
 	@OneToMany(mappedBy = "post")

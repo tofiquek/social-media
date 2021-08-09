@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * CommentDto containing attributes related to the Comment
@@ -23,11 +22,9 @@ public class Comment {
 	private String comment;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JsonIgnore
 	private Post post;
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JsonIgnore
 	private User user;
 	
 	public Comment() {

@@ -1,7 +1,5 @@
 package com.bacancy.SocialMedia.dto;
 
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 
 import com.bacancy.SocialMedia.entity.Post;
 import com.bacancy.SocialMedia.entity.User;
@@ -12,8 +10,10 @@ public class LikeDto {
 	private Long id;
 	private String message;
 	
+	@JsonIgnore
 	private Post post;
 
+	@JsonIgnore
 	private User user;
 	
 	public Long getId() {

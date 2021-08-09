@@ -3,6 +3,8 @@ package com.bacancy.SocialMedia.dto;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 public class PostDto {
 
@@ -12,6 +14,7 @@ public class PostDto {
 	private Date postCreatedDate;
 	private Date postUpdatedDate;
 	
+	@JsonIgnore
 	private UserDto userDto;
 	
 	
