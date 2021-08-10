@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bacancy.SocialMedia.dto.UserDto;
 import com.bacancy.SocialMedia.entity.User;
 import com.bacancy.SocialMedia.repository.UserRepository;
+import com.bacancy.SocialMedia.service.UserService;
 /**
  * UserController is a RestController Which Contain REST API related to User
  * @author Tofique Ahmed Khan
@@ -23,6 +25,9 @@ public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private UserService userService;
 
 	@GetMapping("/social-media/users")
 	public List<User> retrieveAllUsers(){
@@ -30,9 +35,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/social-media/users/{id}")
-	public User retrieveUser(@PathVariable Long id) {
-		Optional<User> user = userRepository.findById(id);
-		return user.get();
+	public UserDto retrieveUser(@PathVariable Long id) {
+		return userService.getUserById(id);
 	}
 	
 	@PostMapping("/social-media/users")
