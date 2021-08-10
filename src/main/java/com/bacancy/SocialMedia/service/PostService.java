@@ -1,5 +1,9 @@
 package com.bacancy.SocialMedia.service;
 
-public class PostService {
+import com.bacancy.SocialMedia.dto.PostDto;
 
+public interface PostService {
+
+	PostDto getPostById(Long id);
+	
 }

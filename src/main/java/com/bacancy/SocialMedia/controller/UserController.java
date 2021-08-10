@@ -24,14 +24,11 @@ import com.bacancy.SocialMedia.service.UserService;
 public class UserController {
 	
 	@Autowired
-	private UserRepository userRepository;
-	
-	@Autowired
 	private UserService userService;
 
 	@GetMapping("/social-media/users")
-	public List<User> retrieveAllUsers(){
-		return userRepository.findAll(); 
+	public List<UserDto> retrieveAllUsers(){
+		return userService.allUsers();
 	}
 	
 	@GetMapping("/social-media/users/{id}")
@@ -40,14 +37,14 @@ public class UserController {
 	}
 	
 	@PostMapping("/social-media/users")
-	public User createUser(@RequestBody User user) {
-		User savedUser = userRepository.save(user);
-		return savedUser;
+	public UserDto createUser(@RequestBody UserDto userDto) {
+		return userService.addUser(userDto);
+		
 	}
 	
 	@DeleteMapping("/social-media/users/{id}")
 	public void deleteUser(@PathVariable Long id) {
-		userRepository.deleteById(id);
+		userService.deleteUser(id);
 	}
 	
 }

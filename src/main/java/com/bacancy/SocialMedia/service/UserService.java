@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bacancy.SocialMedia.dto.UserDto;
 
+
 public interface UserService {
 	
 	/**
@@ -11,7 +12,7 @@ public interface UserService {
 	 * @param user
 	 * @return
 	 */
-	UserDto addUser(UserDto user);
+	UserDto addUser(UserDto userDto);
 	
 	/**
 	 * Get Existing User By Id
@@ -21,6 +22,8 @@ public interface UserService {
 	UserDto getUserById(Long id);
 	
 	List<UserDto> allUsers();
+	
+	void deleteUser(Long id);
 
 	
 }

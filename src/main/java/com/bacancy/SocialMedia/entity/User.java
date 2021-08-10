@@ -24,8 +24,8 @@ public class User {
 	private String email;
 	private String address;
 	
-	@OneToMany(mappedBy = "user")
-	private List<Post> posts;
+//	@OneToMany(mappedBy = "user")
+//	private List<Post> posts;
 	
 	public User() {
 		super();
@@ -70,15 +70,15 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	public List<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
-	
-	
+//
+//	public List<Post> getPosts() {
+//		return posts;
+//	}
+//
+//	public void setPosts(List<Post> posts) {
+//		this.posts = posts;
+//	}
+//	
+//	
 	
 }
