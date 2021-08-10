@@ -21,8 +21,16 @@ public interface UserService {
 	 */
 	UserDto getUserById(Long id);
 	
+	/**
+	 * To get List of all User
+	 * @return
+	 */
 	List<UserDto> allUsers();
 	
+	/**
+	 * To delete a user by id
+	 * @param id
+	 */
 	void deleteUser(Long id);
 
 	

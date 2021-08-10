@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bacancy.SocialMedia.dto.PostDto;
 import com.bacancy.SocialMedia.entity.Post;
 import com.bacancy.SocialMedia.entity.User;
 import com.bacancy.SocialMedia.repository.PostRepository;
 import com.bacancy.SocialMedia.repository.UserRepository;
+import com.bacancy.SocialMedia.service.PostService;
+import com.bacancy.SocialMedia.service.UserService;
 
 @RestController
 public class PostController {
@@ -27,6 +30,9 @@ public class PostController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private PostService postService;
+	
 	@GetMapping("/social-media/posts")
 	public List<Post> retriveAllPosts(){
 		List<Post> posts = postRepository.findAll();
@@ -34,21 +40,15 @@ public class PostController {
 	}
 	
 	@GetMapping("/social-media/{userId}/posts")
-	public List<Post> retriveAllPostsByUser(@PathVariable Long userId){
-		Optional<User> userOptional = userRepository.findById(userId);
-		return userOptional.get().getPosts();
+	public List<PostDto> retriveAllPostsByUser(@PathVariable Long userId){
+		return postService.getPostsByUserId(userId);
 	}
 	
 	
 	
 	@PostMapping("/social-media/{userId}/posts")
-	public Post createPost(@PathVariable Long userId,@RequestBody Post postDto) {
-		Optional<User> user = userRepository.findById(userId);
-		User userDto = user.get();
-		postDto.setUser(userDto);
-		postDto.setPostCreatedDate(new Date());
-		Post savedPost = postRepository.save(postDto);
-		return savedPost;
+	public PostDto createPost(@PathVariable Long userId,@RequestBody PostDto postDto) {
+		return postService.addPost(userId, postDto);
 	}
 	
 	@PutMapping("/social-media/{userId}/posts")

@@ -12,7 +12,7 @@ public class UserDto {
 	private String email;
 	private String address;
 	
-	private List<Post> posts;
+	private List<PostDto> posts;
 	
 	
 	public long getId() {
@@ -45,10 +45,10 @@ public class UserDto {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public List<Post> getPosts() {
+	public List<PostDto> getPosts() {
 		return posts;
 	}
-	public void setPosts(List<Post> posts) {
+	public void setPosts(List<PostDto> posts) {
 		this.posts = posts;
 	}
 	
