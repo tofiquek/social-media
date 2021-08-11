@@ -4,9 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 /**
  * UserDto containing attributes related to the User
  * @author Tofique Ahmed Khan
@@ -24,7 +27,8 @@ public class User {
 	private String email;
 	private String address;
 	
-	@OneToMany(mappedBy = "user")
+	@JsonManagedReference
+	@OneToMany(mappedBy = "user",fetch=FetchType.LAZY)
 	private List<Post> posts;
 	
 	public User() {

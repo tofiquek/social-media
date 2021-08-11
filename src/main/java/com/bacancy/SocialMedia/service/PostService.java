@@ -6,11 +6,11 @@ import com.bacancy.SocialMedia.dto.PostDto;
 
 public interface PostService {
 
-	List<PostDto> getPostsByUserId(Long userId);
+	List<PostDto> getPostsByUserId(String email);
 	
 	PostDto getPostByPostId(Long postId);
 	
-	PostDto addPost(Long userId,PostDto postDto);
+	PostDto addPost(String email,PostDto postDto);
 	
 	void deletePost(Long id );
 	

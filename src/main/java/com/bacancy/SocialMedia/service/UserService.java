@@ -16,10 +16,10 @@ public interface UserService {
 	
 	/**
 	 * Get Existing User By Id
-	 * @param id
+	 * @param email
 	 * @return
 	 */
-	UserDto getUserById(Long id);
+	UserDto getUserByEmail(String email);
 	
 	/**
 	 * To get List of all User
@@ -29,9 +29,9 @@ public interface UserService {
 	
 	/**
 	 * To delete a user by id
-	 * @param id
+	 * @param email
 	 */
-	void deleteUser(Long id);
+	void deleteUser(String email);
 
 	
 }

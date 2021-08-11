@@ -19,7 +19,7 @@ import com.bacancy.SocialMedia.entity.User;
 import com.bacancy.SocialMedia.repository.PostRepository;
 import com.bacancy.SocialMedia.repository.UserRepository;
 import com.bacancy.SocialMedia.service.PostService;
-import com.bacancy.SocialMedia.service.UserService;
+
 
 @RestController
 public class PostController {
@@ -39,17 +39,17 @@ public class PostController {
 		return posts;
 	}
 	
-	@GetMapping("/social-media/{userId}/posts")
-	public List<PostDto> retriveAllPostsByUser(@PathVariable Long userId){
-		return postService.getPostsByUserId(userId);
+	@GetMapping("/social-media/{email}/posts")
+	public List<PostDto> retriveAllPostsByUser(@PathVariable String email){
+		return postService.getPostsByUserId(email);
 	}
 	
 	
 	
-	@PostMapping("/social-media/{userId}/posts")
-	public PostDto createPost(@PathVariable Long userId,@RequestBody PostDto postDto) {
-		return postService.addPost(userId, postDto);
-	}
+//	@PostMapping("/social-media/{userId}/posts")
+//	public PostDto createPost(@PathVariable Long userId,@RequestBody PostDto postDto) {
+//		return postService.addPost(userId, postDto);
+//	}
 	
 	@PutMapping("/social-media/{userId}/posts")
 	public Post updatePost(@PathVariable Long userId,@RequestBody Post postDto) {

@@ -34,8 +34,8 @@ public class PostServiceImpl implements PostService{
 	private ModelMapper modelMapper;
 	
 	@Override
-	public List<PostDto> getPostsByUserId(Long userId) {
-		UserDto userDto = userService.getUserById(userId); 
+	public List<PostDto> getPostsByUserId(String email) {
+		UserDto userDto = userService.getUserByEmail(email); 
 		return userDto.getPosts();
 		
 	}
@@ -47,8 +47,8 @@ public class PostServiceImpl implements PostService{
 	}
 
 	@Override
-	public PostDto addPost(Long userId,PostDto postDto) {
-		UserDto userDto = userService.getUserById(userId);
+	public PostDto addPost(String email,PostDto postDto) {
+		UserDto userDto = userService.getUserByEmail(email);
 		postDto.setUser(userDto);
 		postDto.setPostCreatedDate(new Date());
 		Post post = modelMapper.map(postDto, Post.class);

@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bacancy.SocialMedia.dto.UserDto;
@@ -21,30 +24,32 @@ import com.bacancy.SocialMedia.service.UserService;
  *
  */
 @RestController
+@RequestMapping("/social-media")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/social-media/users")
-	public List<UserDto> retrieveAllUsers(){
-		return userService.allUsers();
+	@GetMapping("/users")
+	public ResponseEntity<List<UserDto>> findAllUsers(){
+		return new ResponseEntity(userService.allUsers(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/social-media/users/{id}")
-	public UserDto retrieveUser(@PathVariable Long id) {
-		return userService.getUserById(id);
+	@GetMapping("/users/{email}")
+	public ResponseEntity<UserDto> findUser(@PathVariable String email) {
+		return new ResponseEntity( userService.getUserByEmail(email),HttpStatus.OK);
 	}
 	
-	@PostMapping("/social-media/users")
-	public UserDto createUser(@RequestBody UserDto userDto) {
-		return userService.addUser(userDto);
+	@PostMapping("/users")
+	public ResponseEntity<UserDto> saveUser(@RequestBody UserDto userDto) {
+		return new ResponseEntity(userService.addUser(userDto), HttpStatus.OK) ;
 		
 	}
 	
-	@DeleteMapping("/social-media/users/{id}")
-	public void deleteUser(@PathVariable Long id) {
-		userService.deleteUser(id);
+	@DeleteMapping("/users/{email}")
+	public ResponseEntity deleteUser(@PathVariable String email) {
+		userService.deleteUser(email);
+		return new ResponseEntity(HttpStatus.OK); 
 	}
 	
 }

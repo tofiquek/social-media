@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService{
 
 	
 	@Override
-	public UserDto getUserById(Long id) {
-		Optional<User> userOptional = userRepository.findById(id);
+	public UserDto getUserByEmail(String email) {
+		Optional<User> userOptional = userRepository.findByEmail(email);
 		UserDto userDto = null;
 		if (userOptional.isPresent()) {
 			
@@ -54,20 +54,10 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public void deleteUser(Long id) {
-		userRepository.deleteById(id);
+	public void deleteUser(String email) {
+		userRepository.deleteByEmail(email);
 		
 	}
 
-	protected UserDto populatedDto(User user) {
-		UserDto userDto = new UserDto();
-		userDto.setId(user.getId());
-		userDto.setName(user.getName());
-		userDto.setEmail(user.getEmail());
-		userDto.setDateOfBirth(user.getDateOfBirth());
-		userDto.setAddress(user.getAddress());
-//		userDto.setPosts(user.getPosts());
-		return userDto;
-	}
 	
 }
