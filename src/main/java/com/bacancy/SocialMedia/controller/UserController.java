@@ -1,7 +1,6 @@
 package com.bacancy.SocialMedia.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bacancy.SocialMedia.dto.UserDto;
-import com.bacancy.SocialMedia.entity.User;
-import com.bacancy.SocialMedia.repository.UserRepository;
 import com.bacancy.SocialMedia.service.UserService;
 /**
  * UserController is a RestController Which Contain REST API related to User
