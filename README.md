@@ -23,6 +23,7 @@ Packages :
   dto         : For Data Transfer Object
   controller  : For rest controller
   repository  : For JPA Repository
+  Service     : For Business Logic
 
 Relations :
   Post has Many to one relationship with User
@@ -31,3 +32,6 @@ Relations :
 Technologies :
   SpringBoot
   JPA
+  
+Entity Diagram
+![Social Media App Entity Diagram](https://github.com/tofiquek/social-media/blob/master/docs/SocialMedia.jpg)
