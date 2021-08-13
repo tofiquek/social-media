@@ -4,7 +4,7 @@ import com.bacancy.SocialMedia.dto.CommentDto;
 
 public interface CommentService {
 	
-	CommentDto addComment(String userEmail,Long postId,CommentDto commentDto);
+	CommentDto addComment(Long userId,Long postId,CommentDto commentDto);
 	
 	void deletePost(Long id );
 }

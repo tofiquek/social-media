@@ -30,8 +30,8 @@ public class CommentServiceImpl implements CommentService{
 	private ModelMapper modelMapper;
 	
 	@Override
-	public CommentDto addComment(String userEmail, Long postId, CommentDto commentDto) {
-		UserDto userDto = userService.getUserByEmail(userEmail);
+	public CommentDto addComment(Long userId, Long postId, CommentDto commentDto) {
+		UserDto userDto = userService.getUserById(userId);
 		PostDto postDto = postService.getPostByPostId(postId);
 		commentDto.setUserDto(userDto);
 		commentDto.setPostDto(postDto);

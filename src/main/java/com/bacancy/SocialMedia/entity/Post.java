@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * PostDto containing attributes related to the Post
@@ -41,7 +43,8 @@ public class Post {
 	@Column(name="post_updated_date")
 	private Date postUpdatedDate;
 
-	@ManyToOne()
+	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name = "user_id",nullable = false)
 	private User user;
 	

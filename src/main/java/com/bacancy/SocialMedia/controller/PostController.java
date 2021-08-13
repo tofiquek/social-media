@@ -21,37 +21,32 @@ import com.bacancy.SocialMedia.service.PostService;
 
 
 @RestController
-@RequestMapping("/social-media")
+@RequestMapping("/posts")
 public class PostController {
 
 	
 	@Autowired
 	private PostService postService;
-		
 	
-	@GetMapping("/{email}/posts")
-	public ResponseEntity<List<PostDto>> retriveAllPostsByUser(@PathVariable String email){
-		return new ResponseEntity(postService.getPostsByUserId(email),HttpStatus.OK);
-	}
-	
-	@GetMapping("/posts/{postId}")
+	@GetMapping("/{postId}")
 	public ResponseEntity<PostDto> retrivePostByPostId(@PathVariable Long postId){
 		return new ResponseEntity<PostDto>(postService.getPostByPostId(postId), HttpStatus.OK);
 	}
 	
 	
-	@PostMapping("/{userEmail}/posts")
-	public ResponseEntity<PostDto> createPost(@PathVariable String userEmail,@RequestBody PostDto postDto) {
-		return new ResponseEntity<PostDto>(postService.addPost(userEmail, postDto), HttpStatus.OK);
+	@PostMapping("/{userId}")
+	public ResponseEntity<PostDto> createPost(@PathVariable(name = "userId") Long userId,@RequestBody PostDto postDto) {
+		return new ResponseEntity<PostDto>(postService.addPost(userId, postDto), HttpStatus.OK);
 	}
 	
-	@PutMapping("/{userEmail}/posts")
-	public ResponseEntity<PostDto> updatePost(@PathVariable String userEmail,@RequestBody PostDto postDto) {
-		return new ResponseEntity<PostDto>(postService.addPost(userEmail, postDto), HttpStatus.OK);
+	@PutMapping("/{userId}")
+	public ResponseEntity<PostDto> updatePost(@PathVariable Long userId,@RequestBody PostDto postDto) {
+		return new ResponseEntity<PostDto>(postService.addPost(userId, postDto), HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/posts/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity deletePost(@PathVariable Long id) {
+		postService.deletePost(id);
 		 return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

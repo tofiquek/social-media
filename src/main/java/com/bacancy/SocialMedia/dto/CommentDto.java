@@ -1,8 +1,6 @@
 package com.bacancy.SocialMedia.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class CommentDto {
 
 	private Long id;

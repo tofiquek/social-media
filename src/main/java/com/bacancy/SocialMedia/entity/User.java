@@ -13,7 +13,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * UserDto containing attributes related to the User
  * @author Tofique Ahmed Khan
@@ -32,9 +35,11 @@ public class User {
 	@Column(name = "email")
 	private String email;
 	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private UserProfile userProfile;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "user",fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Post> posts;
 	

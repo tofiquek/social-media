@@ -2,6 +2,7 @@ package com.bacancy.SocialMedia.service;
 
 import java.util.List;
 
+import com.bacancy.SocialMedia.dto.PostDto;
 import com.bacancy.SocialMedia.dto.UserDto;
 
 
@@ -32,6 +33,8 @@ public interface UserService {
 	 * @param email
 	 */
 	void deleteUser(Long id);
+
+	List<PostDto> getPostsByUserId(Long id);
 
 	
 }

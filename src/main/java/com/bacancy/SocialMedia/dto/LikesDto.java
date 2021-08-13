@@ -3,7 +3,7 @@ package com.bacancy.SocialMedia.dto;
 
 import com.bacancy.SocialMedia.entity.Post;
 import com.bacancy.SocialMedia.entity.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 public class LikesDto {
 

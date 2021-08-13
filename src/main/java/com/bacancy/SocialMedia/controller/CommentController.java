@@ -28,13 +28,13 @@ public class CommentController {
 //		return posts.get().getComments();
 //	}
 
-	@PostMapping("/social-media/{userEmail}/{postId}/comments")
-	public  ResponseEntity<CommentDto> addComment(@PathVariable String userEmail,@PathVariable Long postId,@RequestBody CommentDto commentDto) {
-		return new ResponseEntity<CommentDto>(commentService.addComment(userEmail, postId, commentDto), HttpStatus.OK);
+	@PostMapping("/social-media/{userId}/{postId}/comments")
+	public  ResponseEntity<CommentDto> addComment(@PathVariable(name = "userId") Long userId,@PathVariable(name = "postId") Long postId,@RequestBody CommentDto commentDto) {
+		return new ResponseEntity<CommentDto>(commentService.addComment(userId, postId, commentDto), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/social-media/comments/{id}")
-	public ResponseEntity deleteComment(@PathVariable Long id) {
+	public ResponseEntity deleteComment(@PathVariable(name = "id") Long id) {
 		return new ResponseEntity(HttpStatus.OK);
 	}
 }

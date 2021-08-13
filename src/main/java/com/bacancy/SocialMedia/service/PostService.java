@@ -5,12 +5,10 @@ import java.util.List;
 import com.bacancy.SocialMedia.dto.PostDto;
 
 public interface PostService {
-
-	List<PostDto> getPostsByUserId(String email);
 	
 	PostDto getPostByPostId(Long postId);
 	
-	PostDto addPost(String email,PostDto postDto);
+	PostDto addPost(Long id,PostDto postDto) ;
 	
 	void deletePost(Long id );
 	
