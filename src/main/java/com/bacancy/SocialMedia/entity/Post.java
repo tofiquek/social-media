@@ -3,6 +3,7 @@ package com.bacancy.SocialMedia.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -19,26 +21,35 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
  *
  */
 @Entity
+@Table(name = "posts")
 public class Post {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "id")
 	private Long id;
+	
+	@Column(name = "post_name")
 	private String postName;
-	private String detials;
+	
+	@Column(name="detail")
+	private String detail;
+	
+	@Column(name="post_created_date")
 	private Date postCreatedDate;
+	
+	@Column(name="post_updated_date")
 	private Date postUpdatedDate;
 
-	@JsonBackReference
 	@ManyToOne()
-	@JoinColumn(name = "users_id",nullable = false)
+	@JoinColumn(name = "user_id",nullable = false)
 	private User user;
 	
-	@OneToMany(mappedBy = "post")
+	@OneToMany(mappedBy = "post",fetch=FetchType.LAZY)
 	private List<Comment> comments;
 	
-	@OneToMany(mappedBy = "post")
-	private List<Like> likes;
+	@OneToMany(mappedBy = "post",fetch=FetchType.LAZY)
+	private List<Likes> likes;
 	
 	
 	public Post() {
@@ -49,7 +60,7 @@ public class Post {
 		super();
 		this.id = id;
 		this.postName = postName;
-		this.detials = detials;
+		this.detail = detials;
 		this.postCreatedDate = postCreatedDate;
 		this.postUpdatedDate = postUpdatedDate;
 	}
@@ -66,10 +77,10 @@ public class Post {
 		this.postName = postName;
 	}
 	public String getDetials() {
-		return detials;
+		return detail;
 	}
 	public void setDetials(String detials) {
-		this.detials = detials;
+		this.detail = detials;
 	}
 	public Date getPostCreatedDate() {
 		return postCreatedDate;

@@ -1,13 +1,16 @@
 package com.bacancy.SocialMedia.entity;
 
-import java.util.Date;
+
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 /**
@@ -17,17 +20,20 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
  */
 
 @Entity
+@Table(name = "users")
 public class User {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "id")
 	private long id;
-	private String name;
-	private Date dateOfBirth;
-	private String email;
-	private String address;
 	
-	@JsonManagedReference
+	@Column(name = "email")
+	private String email;
+	
+	@OneToOne
+	private UserProfile userProfile;
+	
 	@OneToMany(mappedBy = "user",fetch=FetchType.LAZY)
 	private List<Post> posts;
 	
@@ -35,46 +41,33 @@ public class User {
 		super();
 	}
 	
-	public User(long id, String name, Date dateOfBirth, String email, String address) {
+	public User(long id, String email, UserProfile userProfile, List<Post> posts) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.dateOfBirth = dateOfBirth;
 		this.email = email;
-		this.address = address;
+		this.userProfile = userProfile;
+		this.posts = posts;
 	}
-	
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
+	
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAddress() {
-		return address;
+	
+	public UserProfile getUserProfile() {
+		return userProfile;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
 	}
-
 	public List<Post> getPosts() {
 		return posts;
 	}
