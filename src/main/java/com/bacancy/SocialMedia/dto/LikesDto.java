@@ -5,15 +5,12 @@ import com.bacancy.SocialMedia.entity.Post;
 import com.bacancy.SocialMedia.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class LikeDto {
+public class LikesDto {
 
-	private Long id;
-	private String message;
 	
-	@JsonIgnore
+	private Long id;
+	private int totalLikes;
 	private Post post;
-
-	@JsonIgnore
 	private User user;
 	
 	public Long getId() {
@@ -22,11 +19,12 @@ public class LikeDto {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getMessage() {
-		return message;
+
+	public int getTotalLikes() {
+		return totalLikes;
 	}
-	public void setMessage(String message) {
-		this.message = message;
+	public void setTotalLikes(int totalLikes) {
+		this.totalLikes = totalLikes;
 	}
 	public Post getPost() {
 		return post;

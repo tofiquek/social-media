@@ -21,7 +21,7 @@ public class PostDto {
 	private List<CommentDto> comments;
 	
 	
-	private List<LikeDto> likes;
+	private List<LikesDto> likes;
 	
 	public Long getId() {
 		return id;
@@ -65,10 +65,10 @@ public class PostDto {
 	public void setComments(List<CommentDto> comments) {
 		this.comments = comments;
 	}
-	public List<LikeDto> getLikes() {
+	public List<LikesDto> getLikes() {
 		return likes;
 	}
-	public void setLikes(List<LikeDto> likes) {
+	public void setLikes(List<LikesDto> likes) {
 		this.likes = likes;
 	}
 

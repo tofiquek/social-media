@@ -6,15 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class CommentDto {
 
 	private Long id;
-
 	private String comment;
-	
-	
-	@JsonIgnore
 	private PostDto postDto;
-
-	
-	@JsonIgnore
 	private UserDto userDto;
 
 	public Long getId() {
