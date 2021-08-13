@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bacancy.SocialMedia.entity.Comment;
-import com.bacancy.SocialMedia.entity.Like;
+import com.bacancy.SocialMedia.entity.Likes;
 import com.bacancy.SocialMedia.entity.Post;
 import com.bacancy.SocialMedia.entity.User;
-import com.bacancy.SocialMedia.repository.LikeRepository;
+import com.bacancy.SocialMedia.repository.LikesRepository;
 import com.bacancy.SocialMedia.repository.PostRepository;
 import com.bacancy.SocialMedia.repository.UserRepository;
 
@@ -26,7 +26,7 @@ public class LikeController {
 	private PostRepository postRepository;
 	
 	@Autowired
-	private LikeRepository likeRepository;
+	private LikesRepository likeRepository;
 	
 //	@PostMapping("/social-media/{userId}/{postId}/likes")
 //	public Like postLike(@PathVariable Long userId,@PathVariable Long postId) {

@@ -21,31 +21,32 @@ import com.bacancy.SocialMedia.service.UserService;
  *
  */
 @RestController
-@RequestMapping("/social-media")
+@RequestMapping("/users")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/users")
+	@GetMapping
 	public ResponseEntity<List<UserDto>> findAllUsers(){
-		return new ResponseEntity(userService.allUsers(), HttpStatus.OK);
+		List<UserDto> users = userService.allUsers();
+		return new ResponseEntity(users, HttpStatus.OK);
 	}
 	
-	@GetMapping("/users/{email}")
-	public ResponseEntity<UserDto> findUser(@PathVariable String email) {
-		return new ResponseEntity( userService.getUserByEmail(email),HttpStatus.OK);
+	@GetMapping("/{id}")
+	public ResponseEntity<UserDto> findUser(@PathVariable(name = "id") Long id) {
+		return new ResponseEntity( userService.getUserById(id),HttpStatus.OK);
 	}
 	
-	@PostMapping("/users")
+	@PostMapping
 	public ResponseEntity<UserDto> saveUser(@RequestBody UserDto userDto) {
 		return new ResponseEntity(userService.addUser(userDto), HttpStatus.OK) ;
 		
 	}
 	
-	@DeleteMapping("/users/{email}")
-	public ResponseEntity deleteUser(@PathVariable String email) {
-		userService.deleteUser(email);
+	@DeleteMapping("/{id}")
+	public ResponseEntity deleteUser(@PathVariable(name="id") Long id) {
+		userService.deleteUser(id);
 		return new ResponseEntity(HttpStatus.OK); 
 	}
 	

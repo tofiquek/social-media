@@ -3,6 +3,7 @@ package com.bacancy.SocialMedia.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,10 +32,10 @@ public class User {
 	@Column(name = "email")
 	private String email;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private UserProfile userProfile;
 	
-	@OneToMany(mappedBy = "user",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "user",fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Post> posts;
 	
 	public User() {
