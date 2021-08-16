@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -37,6 +36,9 @@ public class Post {
 	@Column(name="detail")
 	private String detail;
 	
+	@Column(name="total_likes")
+	private int totalLikes;
+	
 	@Column(name="post_created_date")
 	private Date postCreatedDate;
 	
@@ -54,19 +56,13 @@ public class Post {
 	@OneToMany(mappedBy = "post",fetch=FetchType.LAZY)
 	private List<Likes> likes;
 	
+	@OneToMany(mappedBy = "post",fetch = FetchType.LAZY)
+	private List<Tag> tags;
 	
 	public Post() {
 		super();
 	}
 	
-	public Post(Long id, String postName, String detials, Date postCreatedDate, Date postUpdatedDate) {
-		super();
-		this.id = id;
-		this.postName = postName;
-		this.detail = detials;
-		this.postCreatedDate = postCreatedDate;
-		this.postUpdatedDate = postUpdatedDate;
-	}
 	public Long getId() {
 		return id;
 	}
@@ -79,12 +75,40 @@ public class Post {
 	public void setPostName(String postName) {
 		this.postName = postName;
 	}
-	public String getDetials() {
+	
+	
+	public String getDetail() {
 		return detail;
 	}
-	public void setDetials(String detials) {
-		this.detail = detials;
+
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
+
+	public int getTotalLikes() {
+		return totalLikes;
+	}
+
+	public void setTotalLikes(int totalLikes) {
+		this.totalLikes = totalLikes;
+	}
+
+	public List<Likes> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(List<Likes> likes) {
+		this.likes = likes;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
 	public Date getPostCreatedDate() {
 		return postCreatedDate;
 	}

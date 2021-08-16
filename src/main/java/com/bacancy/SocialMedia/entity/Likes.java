@@ -16,8 +16,6 @@ public class Likes {
 	@GeneratedValue
 	@Column(name = "id")
 	private Long id;
-	@Column(name = "total_likes")
-	private int totalLikes;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Post post;
@@ -37,15 +35,6 @@ public class Likes {
 		this.id = id;
 	}
 	
-	
-	public int getTotalLikes() {
-		return totalLikes;
-	}
-
-	public void setTotalLikes(int totalLikes) {
-		this.totalLikes = totalLikes;
-	}
-
 	public Post getPost() {
 		return post;
 	}

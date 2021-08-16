@@ -35,16 +35,6 @@ public class Comment {
 	public Comment() {
 		super();
 	}
-	
-	
-	
-	public Comment(Long id, String comment) {
-		super();
-		this.id = id;
-		this.comment = comment;
-	}
-
-
 
 	public Long getId() {
 		return id;

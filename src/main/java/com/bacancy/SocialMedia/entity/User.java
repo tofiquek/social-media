@@ -13,9 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * UserDto containing attributes related to the User
@@ -47,13 +45,6 @@ public class User {
 		super();
 	}
 	
-	public User(long id, String email, UserProfile userProfile, List<Post> posts) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.userProfile = userProfile;
-		this.posts = posts;
-	}
 	public long getId() {
 		return id;
 	}
