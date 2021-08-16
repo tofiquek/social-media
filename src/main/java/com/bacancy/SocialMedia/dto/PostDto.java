@@ -11,6 +11,7 @@ public class PostDto {
 	private Long id;
 	private String postName;
 	private String detials;
+	private int totalLikes;
 	private Date postCreatedDate;
 	private Date postUpdatedDate;
 	
@@ -22,6 +23,9 @@ public class PostDto {
 	
 	
 	private List<LikesDto> likes;
+	
+	
+	private List<TagDto> tags;
 	
 	public Long getId() {
 		return id;
@@ -70,6 +74,24 @@ public class PostDto {
 	}
 	public void setLikes(List<LikesDto> likes) {
 		this.likes = likes;
+	}
+	public int getTotalLikes() {
+		return totalLikes;
+	}
+	public void setTotalLikes(int totalLikes) {
+		this.totalLikes = totalLikes;
+	}
+	public UserDto getUserDto() {
+		return userDto;
+	}
+	public void setUserDto(UserDto userDto) {
+		this.userDto = userDto;
+	}
+	public List<TagDto> getTags() {
+		return tags;
+	}
+	public void setTags(List<TagDto> tags) {
+		this.tags = tags;
 	}
 
 	

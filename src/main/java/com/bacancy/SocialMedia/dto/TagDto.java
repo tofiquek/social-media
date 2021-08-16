@@ -1,9 +1,13 @@
 package com.bacancy.SocialMedia.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class TagDto {
 
+	@JsonIgnore
 	private Long id;
 	private String tag;
+	@JsonIgnore
 	private PostDto postDto;
 
 	public Long getId() {

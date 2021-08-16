@@ -1,10 +1,12 @@
 package com.bacancy.SocialMedia.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class CommentDto {
 
 	private Long id;
 	private String comment;
+	@JsonIgnore
 	private PostDto postDto;
 	private UserDto userDto;
 

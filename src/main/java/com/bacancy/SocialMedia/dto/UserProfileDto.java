@@ -4,11 +4,19 @@ import java.util.Date;
 
 
 public class UserProfileDto {
-	
+	private Long id;
 	private String name;
 	
 	private Date dateOfBirth;
 	private String address;
+	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}

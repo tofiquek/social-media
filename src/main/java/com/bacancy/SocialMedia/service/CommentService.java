@@ -6,5 +6,5 @@ public interface CommentService {
 	
 	CommentDto addComment(Long userId,Long postId,CommentDto commentDto);
 	
-	void deletePost(Long id );
+	void deleteComment(Long id );
 }

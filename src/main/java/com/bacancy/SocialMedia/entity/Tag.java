@@ -21,7 +21,6 @@ public class Tag {
 	
 	@ManyToOne
 	private Post post;
-
 	
 	public Tag() {
 		super();
@@ -50,7 +49,4 @@ public class Tag {
 	public void setPost(Post post) {
 		this.post = post;
 	}
-	
-	
-	
 }

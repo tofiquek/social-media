@@ -15,7 +15,7 @@ import com.bacancy.SocialMedia.dto.CommentDto;
 import com.bacancy.SocialMedia.service.CommentService;
 
 @RestController
-@RequestMapping("/social-media")
+@RequestMapping("/comments")
 public class CommentController {
 	
 	
@@ -28,13 +28,14 @@ public class CommentController {
 //		return posts.get().getComments();
 //	}
 
-	@PostMapping("/social-media/{userId}/{postId}/comments")
+	@PostMapping("/{userId}/{postId}")
 	public  ResponseEntity<CommentDto> addComment(@PathVariable(name = "userId") Long userId,@PathVariable(name = "postId") Long postId,@RequestBody CommentDto commentDto) {
 		return new ResponseEntity<CommentDto>(commentService.addComment(userId, postId, commentDto), HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/social-media/comments/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity deleteComment(@PathVariable(name = "id") Long id) {
+		commentService.deleteComment(id);
 		return new ResponseEntity(HttpStatus.OK);
 	}
 }

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -26,9 +27,11 @@ public class Comment {
 	@Column(name="comment")
 	private String comment;
 	
+	@JoinColumn(name = "post_id")
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Post post;
 
+	@JoinColumn(name = "user_id")
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 	
