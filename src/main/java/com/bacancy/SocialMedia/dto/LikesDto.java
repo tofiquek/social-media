@@ -1,17 +1,13 @@
 package com.bacancy.SocialMedia.dto;
 
 
-import com.bacancy.SocialMedia.entity.Post;
-import com.bacancy.SocialMedia.entity.User;
-
-
 public class LikesDto {
 
 	
 	private Long id;
 	private int totalLikes;
-	private Post post;
-	private User user;
+	private PostDto postDto;
+	private UserDto userDto;
 	
 	public Long getId() {
 		return id;
@@ -26,17 +22,17 @@ public class LikesDto {
 	public void setTotalLikes(int totalLikes) {
 		this.totalLikes = totalLikes;
 	}
-	public Post getPost() {
-		return post;
+	public PostDto getPostDto() {
+		return postDto;
 	}
-	public void setPost(Post post) {
-		this.post = post;
+	public void setPostDto(PostDto postDto) {
+		this.postDto = postDto;
 	}
-	public User getUser() {
-		return user;
+	public UserDto getUserDto() {
+		return userDto;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserDto(UserDto userDto) {
+		this.userDto = userDto;
 	}
 	
 	
