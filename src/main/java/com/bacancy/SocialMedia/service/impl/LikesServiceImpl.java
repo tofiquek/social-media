@@ -1,7 +1,12 @@
 package com.bacancy.SocialMedia.service.impl;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 
@@ -31,26 +36,34 @@ public class LikesServiceImpl implements LikesService{
 	
 	@Override
 	public LikesDto like(Long userId, Long postId) {
+		Likes alreadyLikes = new Likes();
+		List<Likes> allLikes = likesRepository.findAllByUsersPosts(userId, postId);
+		for (Iterator iterator = allLikes.iterator(); iterator.hasNext();) {
+			throw new RuntimeException("Already Liked");
+		}
+			
+		
 		UserDto userDto = userService.getUserById(userId);
 		PostDto postDto = postService.getPostByPostId(postId);
 		LikesDto likeDto = new LikesDto();
 		likeDto.setUserDto(userDto);
 		likeDto.setPostDto(postDto);
+		likeDto.setId(4L);
 		Likes likes = modelMapper.map(likeDto, Likes.class);
 		Likes savedlikes = likesRepository.save(likes);
+		
 		LikesDto savedLikesDto = modelMapper.map(savedlikes, LikesDto.class);
 		return savedLikesDto;
 	}
 
 	@Override
 	public void unlike(Long userId, Long postId) {
-		UserDto userDto = userService.getUserById(userId);
-		PostDto postDto = postService.getPostByPostId(postId);
-		LikesDto likeDto = new LikesDto();
-		likeDto.setUserDto(userDto);
-		likeDto.setPostDto(postDto);
-		Likes likes = modelMapper.map(likeDto, Likes.class);
-		likesRepository.delete(likes);
+		Likes likes = new Likes();
+		List<Likes> allLikes = likesRepository.findAllByUsersPosts(userId, postId);
+		for (Iterator iterator = allLikes.iterator(); iterator.hasNext();) {
+			likes = (Likes) iterator.next();
+		}
+		likesRepository.delete(likes);;
 		
 	
 	}

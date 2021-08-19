@@ -1,12 +1,15 @@
 package com.bacancy.SocialMedia.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class LikesDto {
 
 	
 	private Long id;
-	private int totalLikes;
+	
+	@JsonIgnore
 	private PostDto postDto;
+	@JsonIgnore
 	private UserDto userDto;
 	
 	public Long getId() {
@@ -16,12 +19,7 @@ public class LikesDto {
 		this.id = id;
 	}
 
-	public int getTotalLikes() {
-		return totalLikes;
-	}
-	public void setTotalLikes(int totalLikes) {
-		this.totalLikes = totalLikes;
-	}
+
 	public PostDto getPostDto() {
 		return postDto;
 	}
